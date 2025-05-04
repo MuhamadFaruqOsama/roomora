@@ -55,6 +55,9 @@
         {{-- filepond --}}
         <script src="{{ asset('js/sharing/image-upload.js') }}"></script>
 
+        {{-- switch class menu --}}
+        <script src="{{ asset('js/user/switch-class-menu.js') }}"></script>
+
     {{-- flowbite --}}
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </body>

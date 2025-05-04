@@ -22,7 +22,6 @@
     <div class="bg-gray-50">
         @yield('main-content')
     </div>
-    
 
     {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/910e994c98.js" crossorigin="anonymous"></script>

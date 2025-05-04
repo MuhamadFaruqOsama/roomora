@@ -9,7 +9,13 @@
                 <div class="text-gray-300 text-xs">Senin, 29 jan 2025</div>
                 <div class="font-semibold text-white">Dashboard</div>
             </div>
-            <div class="w-[40px] h-[40px] bg-gray-300 rounded-full">p</div>
+            <div class="flex gap-3 items-center">
+                <button class="relative w-fit" type="button" data-drawer-target="notification-detail" data-drawer-toggle="notification-detail" aria-controls="notification-detail" aria-expanded="false">
+                    <i class="hgi hgi-stroke hgi-notification-01 text-2xl text-white font-semibold"></i>
+                    <span class="absolute p-[7px] h-[7px] bg-red-500 rounded-full top-0 right-0 text-xs flex items-center justify-center text-white">2</span>
+                </button>
+                <div class="w-[40px] h-[40px] bg-gray-300 rounded-full">p</div>
+            </div>
         </div>
 
         {{-- features --}}
@@ -69,4 +75,8 @@
     <div class="fixed bottom-0 w-full sm:w-[70%] md:w-[40%]">
         <x-mobile.mobile-navbar title="{{ $title }}"></x-mobile.mobile-navbar>
     </div>
+
+    {{-- notification --}}
+    @include('components.mobile.notification')
+    {{-- notification --}}
 @endsection

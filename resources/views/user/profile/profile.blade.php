@@ -41,20 +41,20 @@
     <div class="px-5 mb-5">
         <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-1">
             <div class="text-[#24316F] border-b border-gray-200 px-3 py-1 text-sm">Profile Settings</div>
-            <a href="/edit-profile" class="flex justify-between items-center">
+            <button class="flex justify-between items-center w-full" type="button" data-drawer-target="edit-profile" data-drawer-show="edit-profile" aria-controls="edit-profile">
                 <div class="w-full py-3 px-3 rounded-md flex gap-4 items-center text-gray-600 border-b border-gray-200">
                     <i class="hgi hgi-stroke hgi-user-settings-01 text-lg"></i>
                     Edit Profile
                 </div>
                 <i class="hgi hgi-stroke hgi-circle-arrow-up-right me-3 text-lg text-gray-600"></i>
-            </a>
-            <a href="/edit-profile" class="flex justify-between items-center">
+            </button>
+            <button class="flex justify-between items-center w-full" type="button" data-drawer-target="change-password" data-drawer-show="change-password" aria-controls="change-password">
                 <div class="w-full py-3 px-3 rounded-md flex gap-4 items-center text-gray-600">
                     <i class="hgi hgi-stroke hgi-shield-key text-lg"></i>
                     Change Password
                 </div>
                 <i class="hgi hgi-stroke hgi-circle-arrow-up-right me-3 text-lg text-gray-600"></i>
-            </a>
+            </button>
         </div>
     </div>
     {{-- profile settings --}}
@@ -71,6 +71,14 @@
         </div>
     </div>
     {{-- logout --}}
+
+    {{-- edit profile --}}
+    @include('components.mobile.edit-profile')
+    {{-- edit profile --}}
+
+    {{-- change password --}}
+    @include('components.mobile.change-password')
+    {{-- change password --}}
 
     {{-- navbar --}}
     <div class="fixed bottom-0 w-full sm:w-[70%] md:w-[40%]">

@@ -41,36 +41,49 @@
     {{-- header --}}
 
     {{-- search bar --}}
-    <div class="my-3 px-5 grid grid-cols-2">
-        <div class="flex gap-2 overflow-auto pe-5">
-            <button class="bg-[#FBBC05] rounded-full py-2 px-5 cursor-pointer text-base">
+    <div class="my-3 px-5">
+        <div class="flex gap-2 overflow-auto pe-5 flex-nowrap whitespace-nowrap">
+            <button id="btn-class-list" onclick="changeClassPage('class-list')" class="bg-[#FBBC05] rounded-full py-2 px-5 cursor-pointer text-base">
                 Class
             </button>
-            <button class="bg-gray-200 rounded-full py-2 px-5 cursor-pointer text-base">
-                Schadule
+            <button id="btn-schedule-list" onclick="changeClassPage('schedule-list')" class="bg-gray-200 rounded-full py-2 px-5 cursor-pointer text-base">
+                Schedule
             </button>
-        </div>
-        <div class="ps-2">
-            {{-- <x-mobile.search-bar
-                name="search-class"
-                placeholder="Search class"
-            ></x-mobile.search-bar> --}}
-        </div>
+            <button id="btn-booking-class" onclick="changeClassPage('booking-class')" class="bg-gray-200 rounded-full py-2 px-5 cursor-pointer text-base">
+                Booking Class
+            </button>
+        </div>        
     </div>
     {{-- search bar --}}
 
     {{-- class list --}}
-    <div id="class-list" class="px-5 mb-24 grid gap-3 grid-cols-2">
-        @foreach ($classList as $item)
-            <x-mobile.class-card
-                id="{{ $item['id'] }}"
-                image="{{ $item['image'] }}"
-                name="{{ $item['name'] }}"
-                description="{{ $item['description'] }}"
-            ></x-mobile.class-card>
-        @endforeach
+    <div id="class-list" class="px-5 pb-24">
+        <x-mobile.search-bar
+            name="search-class"
+            placeholder="Search class here"
+        ></x-mobile.search-bar>
+        <div class="grid gap-3 grid-cols-2 mt-3">
+            @foreach ($classList as $item)
+                <x-mobile.class-card
+                    id="{{ $item['id'] }}"
+                    image="{{ $item['image'] }}"
+                    name="{{ $item['name'] }}"
+                    description="{{ $item['description'] }}"
+                ></x-mobile.class-card>
+            @endforeach
+        </div>
     </div>
     {{-- class list --}}
+
+    {{-- schedule --}}
+    <div id="schedule-list" class="px-5 pb-24"></div>
+    {{-- schedule --}}
+
+    {{-- booking class --}}
+    <div id="booking-class" class="px-5 pb-24 hidden">
+        @include('components.mobile.booking-class')
+    </div>
+    {{-- booking class --}}
 
     {{-- navbar --}}
     <div class="fixed bottom-0 w-full sm:w-[70%] md:w-[40%]">

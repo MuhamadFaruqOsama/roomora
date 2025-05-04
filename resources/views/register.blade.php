@@ -19,7 +19,7 @@
                 <div class="text-gray-500 text-sm">Welcome back!</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
                 <form action="">
-                    {{-- tel input --}}
+                    {{-- username --}}
                     <x-input-default
                         name="Username"
                         placeholder="Input username here"
@@ -42,7 +42,7 @@
 
                     {{-- confirm password input --}}
                     <x-input-default
-                        name="Confirm-Password"
+                        name="Confirm_Password"
                         placeholder="Confirm Password here"
                         type="password">
                     </x-input-default>

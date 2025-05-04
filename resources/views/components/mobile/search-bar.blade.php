@@ -9,5 +9,6 @@
             focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         required
     >
+    {{-- <i class="hgi hgi-stroke hgi-search-01 text-lg absolute top-1/2 right-5 -translate-y-1/2"></i> --}}
     <i class="fa-solid fa-magnifying-glass text-lg absolute top-1/2 right-5 -translate-y-1/2"></i>
 </div>
