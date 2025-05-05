@@ -30,6 +30,11 @@
     <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.js"></script>
 
+    {{-- notif --}}
+    <link rel="stylesheet" href="{{ asset('css/notyf.min.css') }}">
+
+    {{-- flowbite --}}
+    
     {{-- title --}}
     <title>{{ $title }}</title>
 </head>
@@ -60,5 +65,34 @@
 
     {{-- flowbite --}}
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+    {{-- toast --}}
+    <script src="{{ asset('js/sharing/notyf.min.js') }}"></script>
+
+    @if(session('return_message'))
+        <script>
+            $(document).ready(function () {
+                const notyf = new Notyf({
+                    duration: 5000,
+                    dismissible: true,
+                    position: {
+                        x: 'center',
+                        y: 'bottom'
+                    }
+                });
+
+                @php
+                    $message = session('return_message');
+                    $msgText = addslashes($message['message']);
+                @endphp
+
+                @if($message['status'])
+                    notyf.success("{{ $msgText }}");
+                @else
+                    notyf.error("{{ $msgText }}");
+                @endif
+            });
+        </script>
+    @endif
 </body>
 </html>

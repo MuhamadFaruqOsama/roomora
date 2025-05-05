@@ -17,20 +17,34 @@ use App\Http\Controllers\ComplaintController;
 |
 */
 
+// Public routes
 Route::get('/', [UserController::class, 'login'])->name('Login');
 Route::get('/register', [UserController::class, 'register'])->name('Register');
-Route::get('/forgot-password', [UserController::class, 'forgotPassword'])->name('Forgot Password');
-Route::get('/reset-password/{token}', [UserController::class, 'resetPassword'])->name('Reset Password');
-Route::get('/confirm-otp', [UserController::class, 'confirmOTP'])->name('Confirm OTP');
+Route::post('/create-user', [UserController::class, 'createUser'])->name('Create-User');
+Route::get('/forgot-password', [UserController::class, 'forgotPassword'])->name('Forgot-Password');
+Route::get('/reset-password/{token}', [UserController::class, 'resetPassword'])->name('Reset-Password');
+
+// Protected routes (user must be authenticated via Sanctum)
+Route::middleware('auth:sanctum')->group(function () {
+    
+    // Before email verification
+    Route::get('/confirm-otp', [UserController::class, 'confirmOTP'])->name('Confirm-OTP');
+    Route::post('/verify-otp', [UserController::class, 'verifyOTP'])->name('Verify-OTP');
+
+    Route::prefix('app')->middleware('verified.email')->group(function () {
+        // After verified
+        Route::get('/dashboard', function () {
+            return view('user.dashboard', [
+                'title' => 'Dashboard'
+            ]);
+        })->name('User-Dashboard');
+        Route::get('/class', [ClassController::class, 'class'])->name('View Class');
+        Route::get('/complaint', [ComplaintController::class, 'complaint'])->name('View Complaint');
+        Route::get('/history', [HistoryController::class, 'history'])->name('View History');
+        Route::get('/profile', [UserController::class, 'profile'])->name('View Profile');
+    });
 
 
-// USER
-Route::get('/app/dashboard', function() {
-    return view('user.dashboard', [
-        'title' => 'Dashboard'
-    ]);
-})->name('User Dashboard');
-Route::get('/app/class', [ClassController::class, 'class'])->name('View Class');
-Route::get('/app/complaint', [ComplaintController::class, 'complaint'])->name('View Complaint');
-Route::get('/app/history', [HistoryController::class, 'history'])->name('View History');
-Route::get('/app/profile', [UserController::class, 'profile'])->name('View Profile');
+
+    // USER
+});

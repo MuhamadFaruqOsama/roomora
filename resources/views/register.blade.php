@@ -18,12 +18,14 @@
                 <div class="text-2xl text-[#24316F] mt-5 font-bold">Register</div>
                 <div class="text-gray-500 text-sm">Welcome back!</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
-                <form action="">
+                <form action="{{ route('Create-User') }}" method="POST">
+                    @csrf
+                    
                     {{-- username --}}
                     <x-input-default
                         name="Username"
                         placeholder="Input username here"
-                        type="username">
+                        type="text">
                     </x-input-default>
 
                     {{-- email input --}}

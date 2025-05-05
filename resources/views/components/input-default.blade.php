@@ -1,7 +1,7 @@
 <div class="mb-3">
     {{-- label --}}
     <label 
-        for="input-{{ $name }}" 
+        for="input-{{ strtolower($name) }}" 
         class="block mb-1 text-sm font-medium text-gray-900 ms-3">
         {{ str_replace('_', ' ', $name) }}
     </label>
@@ -17,7 +17,7 @@
             placeholder="{{ $placeholder }}" 
             name="{{ strtolower($name) }}" 
             @if($value) 
-                value="{{ $value }}"
+                value="{{ old(strtolower($name), $value ?? '') }}"
             @endif
             @if($isRequired) required @endif
             @if($type == "password") 
