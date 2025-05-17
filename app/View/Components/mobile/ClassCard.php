@@ -11,16 +11,14 @@ class ClassCard extends Component
     public $id;
     public $image;
     public $name;
-    public $description;
     /**
      * Create a new component instance.
      */
-    public function __construct($id, $image, $name, $description)
+    public function __construct($id, $image, $name)
     {
         $this->id = $id;
         $this->image = $image;
         $this->name = $name;
-        $this->description = $description;
     }
 
     /**

@@ -14,7 +14,9 @@
                     <i class="hgi hgi-stroke hgi-notification-01 text-2xl text-white font-semibold"></i>
                     <span class="absolute p-[7px] h-[7px] bg-red-500 rounded-full top-0 right-0 text-xs flex items-center justify-center text-white">2</span>
                 </button>
-                <div class="w-[40px] h-[40px] bg-gray-300 rounded-full">p</div>
+                <a href="/app/profile">
+                    <div class="w-[40px] h-[40px] bg-gray-300 rounded-full">p</div>
+                </a>
             </div>
         </div>
 
@@ -56,7 +58,7 @@
     <div id="notification" class="pe-5">
         <div class="text-gray-700 text-sm font-semibold mt-7 ps-5">Notification</div>
         {{-- history --}}
-        <div class="col-span-2 rounded-r-full bg-white mt-2 px-5 py-3 flex items-center gap-4 border border-gray-300">
+        {{-- <div class="col-span-2 rounded-r-full bg-white mt-2 px-5 py-3 flex items-center gap-4 border border-gray-300">
             <i class="fa-solid fa-triangle-exclamation text-lg text-yellow-500"></i>
             <a href="">
                 <div class="flex items-center justify-between w-full">
@@ -65,7 +67,8 @@
                 </div>
                 <div class="text-sm text-gray-500 line-clamp-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam animi distinctio quos hic fuga quibusdam deserunt numquam ullam sapiente voluptate?</div>
             </a>
-        </div>
+        </div> --}}
+        <div class="flex justify-center text-gray-500 px-5">feature is under development</div>
         
 
 

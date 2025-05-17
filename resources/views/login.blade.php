@@ -18,7 +18,9 @@
                 <div class="text-2xl text-[#24316F] mt-5 font-bold">Login</div>
                 <div class="text-gray-500 text-sm">Hello, Welcome back!</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
-                <form action="">
+                <form action="{{ route('Auth') }}" method="POST" onsubmit="disableForm(event, 'login')">
+                    @csrf
+                    
                     {{-- email input --}}
                     <x-input-default
                         name="Email"
@@ -33,9 +35,9 @@
                         type="password">
                     </x-input-default>
 
-                    <div class="my-3 text-end">
+                    {{-- <div class="my-3 text-end">
                         <a href="/forgot-password" class="cursor-pointer text-blue-500 transition-all hover:text-blue-600 text-sm">Forgot Password</a>
-                    </div>
+                    </div> --}}
 
                     {{-- submit button --}}
                     <x-button-default

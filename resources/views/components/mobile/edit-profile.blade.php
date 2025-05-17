@@ -11,21 +11,15 @@
     </button>
        
     {{-- form edit --}}
-    <form action="" method="post">
+    <form action="{{ route('Edit-Profile') }}" method="post" onsubmit="disableForm(event, 'save-changes')">
         @csrf
-        {{-- username --}}
-        <x-input-default
-            name="Username"
-            placeholder="Input username here"
-            type="text">
-        </x-input-default>
-        {{-- username --}}
-
+        
         {{-- name --}}
         <x-input-default
-            name="Name"
+            name="Full_Name"
             placeholder="Input name here"
-            type="text">
+            type="text"
+            value="{{ $data->full_name ?? '' }}">
         </x-input-default>
         {{-- name --}}
 
@@ -33,7 +27,8 @@
         <x-input-default
             name="NIM"
             placeholder="Input NIM here"
-            type="text">
+            type="text"
+            value="{{ $data->NIM ?? '' }}">
         </x-input-default>
         {{-- nim --}}
 
@@ -41,15 +36,17 @@
         <x-input-default
             name="Major"
             placeholder="Input major here"
-            type="text">
+            type="text"
+            value="{{ $data->major ?? '' }}">
         </x-input-default>
         {{-- major --}}
 
         {{-- major --}}
         <x-input-default
-            name="Entry-Year"
+            name="Entry_Year"
             placeholder="Input entry year here"
-            type="date">
+            type="date"
+            value="{{ $data->entry_year ?? '' }}">
         </x-input-default>
         {{-- major --}}
 

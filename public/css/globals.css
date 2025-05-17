@@ -27,3 +27,19 @@ body {
     }
 } 
 /* loader */
+
+
+.notyf__message {
+    font-size: 14px !important;/* Tailwind utility */
+}
+
+.filepond--drop-label {
+    background-color: #fff !important;
+    border: 1px solid #D1D5DB !important;
+    border-radius: 10px !important;
+    overflow: hidden;
+}
+
+.filepond--panel-root {
+    background-color: #fff !important;
+}

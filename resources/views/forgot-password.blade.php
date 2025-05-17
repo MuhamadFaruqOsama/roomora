@@ -17,7 +17,9 @@
                 <div class="text-2xl text-[#24316F] mt-5 font-bold">Forgot Password</div>
                 <div class="text-gray-500 text-sm">Please enter your email to make sure it's really you</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
-                <form action="">
+                <form action="{{ route('Send-Reset-Password-Link') }}" method="POST">
+                    @csrf
+                    
                     {{-- tel input --}}
                     <x-input-default
                         name="Email"

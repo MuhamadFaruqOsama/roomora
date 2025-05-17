@@ -17,7 +17,7 @@
                 <div class="text-2xl text-[#24316F] mt-5 font-bold">Confirm OTP</div>
                 <div class="text-gray-500 text-sm">We have sent an OTP code to the email you registered. Please enter the OTP code to verify your account.</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
-                <form action="{{ route('Verify-OTP') }}" method="POST">
+                <form action="{{ route('Verify-OTP') }}" method="POST" onsubmit="disableForm(event, 'verification')">
                     @csrf
 
                     {{-- OTP input --}}
@@ -36,7 +36,9 @@
                         ></x-button-default>
                     </div>
                 </form>
-                <div class="mt-5 cursor-pointer text-blue-500 transition-all hover:text-blue-600 text-sm text-center">Resend OTP</div>
+                <button onclick="resendOTP()" class="text-center w-full" id="resend-btn">
+                    <div class="mt-5 cursor-pointer text-blue-500 transition-all hover:text-blue-600 text-sm">Resend OTP</div>
+                </button>
             </div>
         </div>
     </div>

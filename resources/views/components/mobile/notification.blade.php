@@ -13,7 +13,7 @@
     </div>
        
     {{-- notification list --}}
-    <div id="notification-list">
+    {{-- <div id="notification-list">
         <div class="bg-yellow-50 border-t border-b border-yellow-200 w-full py-2 px-5">
             <div class="flex justify-between items-center mb-2">
                 <div class="text-gray-800 font-medium text-md">Notification</div>
@@ -24,6 +24,7 @@
                 <button type="button" class="text-yellow-500 text-base font-semibold">Confirm</button>
             </div>
         </div>
-    </div>
+    </div> --}}
+    <div class="flex justify-center text-gray-500 px-5">feature is under development</div>
     {{-- notification list --}}
  </div>

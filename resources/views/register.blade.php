@@ -16,9 +16,9 @@
             </div>
             <div class="bg-white shadow-lg p-5 w-full rounded-t-4xl border border-gray-300 min-h-[80vh]">
                 <div class="text-2xl text-[#24316F] mt-5 font-bold">Register</div>
-                <div class="text-gray-500 text-sm">Welcome back!</div>
+                <div class="text-gray-500 text-sm">Hello, register yourself!</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
-                <form action="{{ route('Create-User') }}" method="POST">
+                <form action="{{ route('Create-User') }}" method="POST" onsubmit="disableForm(event, 'register')">
                     @csrf
                     
                     {{-- username --}}

@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    {{-- CSRF TOKEN --}}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     {{-- tailwind --}}
     @vite('resources/css/app.css')
 
@@ -51,11 +54,17 @@
         {{-- jquery --}}
         <script src="{{ asset('js/sharing/jquery-3.7.1.min.js') }}"></script>
 
+        {{-- toast --}}
+        <script src="{{ asset('js/sharing/notyf.min.js') }}"></script>
+
+        {{-- notif function --}}
+        <script src="{{ asset('js/sharing/notyf.js') }}"></script>
+
         {{-- showPassword --}}
         <script src="{{ asset('js/sharing/showPassword.js') }}"></script>
 
         {{-- button --}}
-        <script src="{{ asset('js/sharing/button.js') }}"></script>
+        <script src="{{ asset('js/sharing/form.js') }}"></script>
 
         {{-- filepond --}}
         <script src="{{ asset('js/sharing/image-upload.js') }}"></script>
@@ -63,35 +72,27 @@
         {{-- switch class menu --}}
         <script src="{{ asset('js/user/switch-class-menu.js') }}"></script>
 
+        {{-- OTP --}}
+        <script src="{{ asset('js/user/OTP.js') }}"></script>
+
+        {{-- email notification --}}
+        <script src="{{ asset('js/user/email_notification.js') }}"></script>
+
+        {{-- complaint --}}
+        <script src="{{ asset('js/user/complaint.js') }}"></script>
+
+        {{-- schedule --}}
+        <script src="{{ asset('js/user/schedule.js') }}"></script>
+
     {{-- flowbite --}}
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
-    {{-- toast --}}
-    <script src="{{ asset('js/sharing/notyf.min.js') }}"></script>
-
     @if(session('return_message'))
+        @php
+            $message = session('return_message');
+        @endphp
         <script>
-            $(document).ready(function () {
-                const notyf = new Notyf({
-                    duration: 5000,
-                    dismissible: true,
-                    position: {
-                        x: 'center',
-                        y: 'bottom'
-                    }
-                });
-
-                @php
-                    $message = session('return_message');
-                    $msgText = addslashes($message['message']);
-                @endphp
-
-                @if($message['status'])
-                    notyf.success("{{ $msgText }}");
-                @else
-                    notyf.error("{{ $msgText }}");
-                @endif
-            });
+            getNotification("{{ $message['message'] }}", "{{ $message['status'] }}")
         </script>
     @endif
 </body>

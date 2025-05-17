@@ -2,7 +2,7 @@ $(document).ready(function () {
     const $inputImage = $('.filepond');
 
     if ($inputImage.length) {
-        // Register plugin tambahan
+        // Register plugins
         FilePond.registerPlugin(
             FilePondPluginImagePreview,
             FilePondPluginImageResize,
@@ -10,17 +10,36 @@ $(document).ready(function () {
             FilePondPluginImageExifOrientation
         );
 
-        // Buat instance FilePond (jika lebih dari satu, bisa pakai each)
+        // Setup each FilePond input
         $inputImage.each(function () {
             FilePond.create(this, {
+                labelIdle: '<span class="filepond--label-action">Click here to upload photo evidence</span>',
+                name: 'photo_evidence',
                 allowMultiple: true,
                 maxFiles: 5,
-                acceptedFileTypes: ['image/*'],
-                maxFileSize: '2MB',
+                acceptedFileTypes: ['image/*', 'application/pdf'],
+                maxFileSize: '5MB',
                 server: {
-                    process: '/upload',
-                    revert: '/revert',
-                }
+                    process: {
+                        url: '/upload',
+                        method: 'POST',
+                        headers: {
+                            "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
+                        },
+                        onload: (response) => {
+                            console.log(response);
+                            
+                            return response;
+                        }
+                    },
+                    revert: {
+                        url: '/revert',
+                        method: 'POST',
+                        headers: {
+                            "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
+                        }
+                    }
+                },
             });
         });
     }

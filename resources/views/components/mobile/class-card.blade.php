@@ -5,9 +5,6 @@
             <div class="text-base font-semibold">
                 {{ $name }}
             </div>
-            <div class="text-xs mb-2 -mt-1">
-                {{ $description }}
-            </div>
         </div>
     </div>
 </a>

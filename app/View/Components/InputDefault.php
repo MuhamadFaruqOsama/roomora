@@ -13,16 +13,18 @@ class InputDefault extends Component
     public $placeholder;
     public $type;
     public $isRequired;
+    public $isReadOnly;
     /**
      * Create a new component instance.
      */
-    public function __construct($name, $placeholder, $type, $isRequired = true, $value = null)
+    public function __construct($name, $placeholder, $type, $value = null, $isRequired = true, $isReadOnly = false)
     {
         $this->name = $name;
         $this->placeholder = $placeholder;
         $this->type = $type;
+        $this->value = $value;  
         $this->isRequired = $isRequired;
-        $this->value = $value; 
+        $this->isReadOnly = $isReadOnly;
     }
 
     /**

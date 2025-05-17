@@ -11,11 +11,11 @@
     </button>
        
     {{-- form edit --}}
-    <form action="" method="post">
+    <form action="{{ route('Change-Password') }}" method="post" onsubmit="disableForm(event, 'change-password')">
         @csrf
         {{-- username --}}
         <x-input-default
-            name="Old-Password"
+            name="Old_Password"
             placeholder="Input old password here"
             type="password">
         </x-input-default>
@@ -23,7 +23,7 @@
 
         {{-- name --}}
         <x-input-default
-            name="New-Password"
+            name="New_Password"
             placeholder="Input new password here"
             type="password">
         </x-input-default>
@@ -31,7 +31,7 @@
 
         {{-- nim --}}
         <x-input-default
-            name="Confirm-Password"
+            name="Confirm_Password"
             placeholder="Input confirm password here"
             type="password">
         </x-input-default>

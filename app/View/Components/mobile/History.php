@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 
 class History extends Component
 {
+    public $id;
     public $type;
     public $title;
     public $time;
@@ -18,8 +19,9 @@ class History extends Component
     /** 
      * Create a new component instance.
      */
-    public function __construct($type, $title, $time, $status, $description, $image = null, $class)
+    public function __construct($id, $type, $title, $time, $status, $description, $class, $image = null)
     {
+        $this->id = $id;
         $this->type = $type;
         $this->title = $title;
         $this->time = $time;

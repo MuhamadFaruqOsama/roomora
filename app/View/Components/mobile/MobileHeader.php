@@ -9,12 +9,14 @@ use Illuminate\View\Component;
 class MobileHeader extends Component
 {
     public $title;
+    public $backBtn;
     /**
      * Create a new component instance.
      */
-    public function __construct($title)
+    public function __construct($title, $backBtn = false)
     {
         $this->title = $title;
+        $this->backBtn = $backBtn;
     }
 
     /**

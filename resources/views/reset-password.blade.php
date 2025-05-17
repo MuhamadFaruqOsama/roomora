@@ -17,7 +17,9 @@
                 <div class="text-2xl text-[#24316F] mt-5 font-bold">Reset Password</div>
                 <div class="text-gray-500 text-sm">Please enter your new password below!</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
-                <form action="">
+                <form action="{{ route('Reset-Password') }}" method="POST">
+                    @csrf
+                    
                     {{-- password input --}}
                     <x-input-default
                         name="Password"
@@ -27,7 +29,7 @@
 
                     {{-- confirm password input --}}
                     <x-input-default
-                        name="Confirm-Password"
+                        name="Confirm_Password"
                         placeholder="Confirm Password here"
                         type="password">
                     </x-input-default>
