@@ -1,46 +1,37 @@
 $(document).ready(function () {
     const $inputImage = $('.filepond');
+    if($inputImage.length) {
+        $inputImage.dropify({
+            messages: {
+                'default': 'drag or drop photo evidance here',
+                'replace': 'Drag and drop or click to replace',
+                'remove':  'Remove',
+                'error':   'Ooops, something wrong happended.'
+            }
+        });
+    }
 
-    if ($inputImage.length) {
-        // Register plugins
-        FilePond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginImageResize,
-            FilePondPluginFileValidateSize,
-            FilePondPluginImageExifOrientation
-        );
+    const $roomImage = $('#room-picture-input');
+    if($roomImage.length) {
+        $roomImage.dropify({
+            messages: {
+                'default': 'drag or drop room picture here',
+                'replace': 'Drag and drop or click to replace',
+                'remove':  'Remove',
+                'error':   'Ooops, something wrong happended.'
+            }
+        });
+    }
 
-        // Setup each FilePond input
-        $inputImage.each(function () {
-            FilePond.create(this, {
-                labelIdle: '<span class="filepond--label-action">Click here to upload photo evidence</span>',
-                name: 'photo_evidence',
-                allowMultiple: true,
-                maxFiles: 5,
-                acceptedFileTypes: ['image/*', 'application/pdf'],
-                maxFileSize: '5MB',
-                server: {
-                    process: {
-                        url: '/upload',
-                        method: 'POST',
-                        headers: {
-                            "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
-                        },
-                        onload: (response) => {
-                            console.log(response);
-                            
-                            return response;
-                        }
-                    },
-                    revert: {
-                        url: '/revert',
-                        method: 'POST',
-                        headers: {
-                            "X-CSRF-Token": $('meta[name="csrf-token"]').attr("content")
-                        }
-                    }
-                },
-            });
+    const $360Picture = $('#360-picture-input');
+    if($360Picture.length) {
+        $360Picture.dropify({
+            messages: {
+                'default': 'drag or drop 360 picture here',
+                'replace': 'Drag and drop or click to replace',
+                'remove':  'Remove',
+                'error':   'Ooops, something wrong happended.'
+            }
         });
     }
 });

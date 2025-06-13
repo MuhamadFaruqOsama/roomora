@@ -21,6 +21,7 @@ return new class extends Migration
             $table->timestamp('start');
             $table->timestamp('end');
             $table->string('subject');
+            $table->enum('type', ['book', 'main'])->default('book');
             $table->timestamps();
         });
     }

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('class', function (Blueprint $table) {
             $table->id();
             $table->string('code');
-            $table->string('name')->unique();
-            $table->string('picture');
+            $table->string('name');
+            $table->string('picture')->nullable();
             $table->text('desc');
             $table->string('360_picture')->nullable();
             $table->timestamps();

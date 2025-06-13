@@ -7,7 +7,7 @@
 
     {{-- form complaint --}}
     <div class="px-5 mt-3 mb-10 pb-24">
-        <div class="bg-green-100 text-sm p-2 text-green-700 rounded-md border border-green-500">
+        <div class="bg-[#ff639214] text-sm p-2 text-gray-700 rounded-tr-lg rounded-br-lg shadow-sm border-s-4 border-[#ff6392]">
             Please input the title, class code, photo evidence, and a short description if necessary to make it easier for the admin to handle it.
         </div>
         <form action="" method="post" class="mt-3" enctype="multipart/form-data" onsubmit="disableForm(event, 'complaint')" >
@@ -35,11 +35,8 @@
             {{-- bukti foto --}}
             <div class="mb-3">
                 <label for="photo-evidence" class="block mb-1 text-sm font-medium text-gray-900 ms-3">Photo Evidence <span class="text-xs text-gray-400">(Max: 5)</span></label>
-                <input type="file" name="photo_evidence[]" class="filepond" multiple data-max-files="5" accept="image/*" id="photo-evidence" capture="environment" required>
+                <input type="file" name="photo_evidence" class="filepond" accept="image/*" id="photo-evidence" capture="environment" required>
                 @error('photo_evidence')
-                    <small class="text-xs text-red-500 font-medium ms-3">{{ $message }}</small>
-                @enderror
-                @error('photo_evidence.*')
                     <small class="text-xs text-red-500 font-medium ms-3">{{ $message }}</small>
                 @enderror
             </div>

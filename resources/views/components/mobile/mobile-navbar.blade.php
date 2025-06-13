@@ -32,7 +32,7 @@
     <div class="flex justify-between items-center gap-1 md:gap-3">
         @foreach ($navItems as $item)
             <a href="{{ $item['route'] }}">
-                <div class="flex gap-2 {{ $title == $item['title'] ? 'bg-[#24316F] backdrop-opacity-20 bg-opacity-20 py-3 px-4 rounded-full' : '' }} justify-center items-center text-center">
+                <div class="flex gap-2 {{ $title == $item['title'] ? 'bg-[#ff6392] backdrop-opacity-20 bg-opacity-20 py-3 px-4 rounded-full' : '' }} justify-center items-center text-center">
                     <i class="text-lg {{ $item['icon'] }} {{ $title == $item['title'] ? 'text-white' : 'text-gray-700' }}"></i>
                     @if ($title == $item['title'])
                         <div class="text-xs line-clamp-1 transition-all duration-300 text-white font-semibold">{{ $item['title'] }}</div>

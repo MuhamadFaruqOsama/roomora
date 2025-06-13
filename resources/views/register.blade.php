@@ -2,7 +2,7 @@
 
 @section('main-content')
     
-    <div class="relative w-full min-h-screen bg-[#24316F]">
+    <div class="relative w-full min-h-screen bg-[#5aa9e6]">
         <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full sm:w-[90%] md:w-[400px]">
             <div class="flex justify-center items-center gap-5 mb-5 px-5 mt-5">
                 <img 
@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="bg-white shadow-lg p-5 w-full rounded-t-4xl border border-gray-300 min-h-[80vh]">
-                <div class="text-2xl text-[#24316F] mt-5 font-bold">Register</div>
+                <div class="text-2xl text-[#5aa9e6] mt-5 font-bold">Register</div>
                 <div class="text-gray-500 text-sm">Hello, register yourself!</div>
                 <div class="border-t border-gray-200 w-full my-3"></div>
                 <form action="{{ route('Create-User') }}" method="POST" onsubmit="disableForm(event, 'register')">

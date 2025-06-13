@@ -17,7 +17,8 @@ class Schedule extends Model
         'day',
         'start',
         'end',
-        'subject'
+        'subject',
+        'type'
     ];
 
     public function class()

@@ -5,7 +5,7 @@
     <x-mobile.mobile-header title="{{ $title }}"></x-mobile.mobile-header>
     {{-- header --}}
 
-    <div class="mt-4 mb-24" id="history-list">
+    <div class="mt-4 mb-24 px-5" id="history-list">
         @foreach ($dataHistory as $item)
             <div class="mb-2">
                 <x-mobile.history
@@ -14,11 +14,8 @@
                     title="{{ $item->bookingClass?->title ?? $item->complaint?->title }}"
                     time="{{ $item->created_at }}"
                     status="{{ $item->bookingClass?->status ?? $item->complaint?->status }}"
-                    description="{{ $item->bookingClass?->desc ?? $item->complaint?->desc }}"
+                    description="{{ $item->book_id ?? $item->complaint_id }}"
                     class="{{ $item->book_id ? ($item->bookingClass?->class?->code ?? '') . '-' . ($item->bookingClass?->class?->name ?? '') : ($item->complaint?->class?->code ?? '') . '-' . ($item->complaint?->class?->name ?? '') }}"
-                    {{-- @if($item->complaint_id)
-                        image="{{ $item->complaint->photo }}"
-                    @endif --}}
                 ></x-mobile.history>
             </div>
         @endforeach

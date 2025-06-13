@@ -2,7 +2,7 @@
 <div id="notification-detail" class="fixed top-0 left-0 z-40 h-screen py-4 overflow-y-auto transition-transform -translate-x-full bg-white w-full" tabindex="-1" aria-labelledby="drawer-label">
     <div class="px-5">
         <h5 id="drawer-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500">
-            Notification
+            Notification <div class="text-sm text-gray-500 font-normal ms-2">(Last 7 days)</div>
         </h5>
         <button type="button" data-drawer-hide="notification-detail" aria-controls="notification-detail" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center" >
            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
@@ -12,19 +12,29 @@
         </button>
     </div>
        
-    {{-- notification list --}}
-    {{-- <div id="notification-list">
-        <div class="bg-yellow-50 border-t border-b border-yellow-200 w-full py-2 px-5">
-            <div class="flex justify-between items-center mb-2">
-                <div class="text-gray-800 font-medium text-md">Notification</div>
-                <div class="text-gray-700 text-xs">09:00</div>
-            </div>
-            <div class="text-gray-500 text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, atque necessitatibus numquam inventore perferendis quos ab quis eos hic delectus?</div>
-            <div class="flex justify-end mt-2">
-                <button type="button" class="text-yellow-500 text-base font-semibold">Confirm</button>
-            </div>
+    {{--  --}}
+        <div id="notification-list" class="px-5">
+            @foreach ($dataNotification as $item)
+                <a href="/app/response/{{ $item->id }}">
+                    <div class="text-sm p-2 mb-2 text-gray-700 shadow-sm border-s-4 {{ $item->complaint ? 'border-[#ff6392] bg-[#ff639214]' : 'border-[#5aa9e6] bg-[#5aa9e61f]' }}">
+                        <div class="text-gray-700 font-medium mb-2 capitalize flex justify-between">
+                            {{ $item->complaint ? 'complaint' : 'booking class' }}
+                            <div class="text-xs text-gray-500">
+                                {{ $item->complaint ? \Carbon\Carbon::parse($item->complaint->response_created_at)->diffForHumans() : \Carbon\Carbon::parse($item->bookingClass->response_created_at)->diffForHumans() }}
+                            </div>
+                        </div>
+                        <div class="text-sm text-gray-600 line-clamp-2">
+                            <div class="text-sm text-gray-600 line-clamp-2">
+                                @if ($item->complaint)
+                                    Your complaint about <span class="font-medium text-black">"{{ $item->complaint->title }}"</span> has been responded to by the admin. Click to see the response
+                                @else
+                                    Your booking class <span class="font-medium text-black">"{{ $item->bookingClass->class->code . '-' . $item->bookingClass->class->name}}"</span> has been responded to by the admin. Click here to see the response
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
-    </div> --}}
-    <div class="flex justify-center text-gray-500 px-5">feature is under development</div>
-    {{-- notification list --}}
+    {{--  --}}
  </div>

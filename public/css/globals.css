@@ -43,3 +43,7 @@ body {
 .filepond--panel-root {
     background-color: #fff !important;
 }
+
+.dropify-message {
+    font-size: 12px !important;
+}

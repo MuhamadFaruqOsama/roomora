@@ -8,12 +8,12 @@
     {{-- profile picture --}}
     <div class="relative w-[100px] mx-auto">
         <img 
-            src="{{ asset('img/class/room/room-1.jpg') }}" 
+            src="{{ asset('img/app/blank_pp.png') }}" 
             alt="profile picture"
             class="w-full h-[100px] rounded-full border-4 border-white shadow-md mx-auto mt-4">
-        <button type="button" class="absolute bottom-0 right-0 bg-[#FBBC05] w-[30px] h-[30px] rounded-full flex justify-center items-center">
+        {{-- <button type="button" class="absolute bottom-0 right-0 bg-[#FBBC05] w-[30px] h-[30px] rounded-full flex justify-center items-center">
             <i class="fa-regular fa-pen-to-square"></i>
-        </button>
+        </button> --}}
     </div>
     {{-- profile picture --}}
 
@@ -85,7 +85,7 @@
             <button class="flex justify-between items-center w-full" type="button" data-drawer-target="edit-profile" data-drawer-show="edit-profile" aria-controls="edit-profile">
                 <div class="w-full py-3 px-3 rounded-md flex gap-4 items-center text-gray-600 border-b border-gray-200">
                     <i class="hgi hgi-stroke hgi-user-settings-01 text-lg"></i>
-                    {{ $data ? 'Edit Profile' : 'Fill Profile Data' }}
+                    {{ $data != null ? 'Edit Profile' : 'Fill Profile Data' }}
                 </div>
                 <i class="hgi hgi-stroke hgi-circle-arrow-up-right me-3 text-lg text-gray-600"></i>
             </button>
@@ -110,7 +110,7 @@
     {{-- logout --}}
     <div class="px-5 mb-5 pb-24">
         <div class="bg-red-100 rounded-2xl shadow-sm border border-red-200 p-1">
-            <form action="{{ route('Logout') }}" method="post" id="logout-form">
+            <form action="{{ route('Logout-user') }}" method="post" id="logout-form">
                 @csrf
                 <button type="submit" class="flex justify-between items-center w-full">
                     <div class="w-full py-3 px-3 rounded-md flex gap-4 items-center text-red-600 border-b border-gray-200">

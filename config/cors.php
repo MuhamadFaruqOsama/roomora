@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'],
+    'allowed_origins' => ['roomora.com', 'roomora.test'],
 
     'allowed_origins_patterns' => [],
 

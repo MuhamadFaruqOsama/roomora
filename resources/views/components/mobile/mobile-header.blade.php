@@ -1,4 +1,4 @@
-<div class="bg-[#24316F] text-center py-3 px-5 text-white font-semibold text-lg relative">
+<div class="bg-[#5aa9e6] text-center py-3 px-5 text-white font-semibold text-lg relative">
     {{ $title }}
 
     @if ($backBtn)

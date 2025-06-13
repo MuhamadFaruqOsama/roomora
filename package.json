@@ -15,8 +15,14 @@
     },
     "dependencies": {
         "@tailwindcss/vite": "^4.1.4",
+        "chart.js": "^4.4.9",
+        "dropify": "^0.2.2",
         "filepond": "^4.32.7",
         "flowbite": "^3.1.2",
-        "notyf": "^3.10.0"
+        "jquery": "^3.7.1",
+        "laravel-echo": "^2.1.4",
+        "notyf": "^3.10.0",
+        "pusher-js": "^8.4.0",
+        "sweetalert2": "^11.21.2"
     }
 }

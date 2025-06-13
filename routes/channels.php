@@ -13,6 +13,25 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
-    return (int) $user->id === (int) $id;
+// ADMIN CHANNEL ==================================================================
+Broadcast::channel('complaint-to-admin', function ($user) {
+    return $user->role === 'admin';
+});
+
+Broadcast::channel('booking-class-to-admin', function ($user) {
+    return $user->role === 'admin';
+});
+
+Broadcast::channel('confirm-complaint-to-admin', function ($user) {
+    return $user->role === 'admin';
+});
+
+
+// USER CHANNEL ===================================================================
+Broadcast::channel('response-complaint-to-user-{id}', function ($user, $id) {
+    return $user->id === $id;
+});
+
+Broadcast::channel('response-booking-class-to-user-{id}', function ($user, $id) {
+    return $user->id === $id;
 });

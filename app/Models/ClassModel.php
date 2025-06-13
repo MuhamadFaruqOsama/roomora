@@ -19,17 +19,20 @@ class ClassModel extends Model
         'code',
         'name',
         'picture',
-        'facility',
+        'desc',
+        'preview_picture',
     ];
 
     protected static function booted()
     {
         static::saved(function ($class) {
             Cache::forget('class-data-' . Auth::id());
+            Cache::forget('detail-class-' . Auth::id() . '-' . $class->id);
         });
 
         static::deleted(function ($class) {
             Cache::forget('class-data-' . Auth::id());
+            Cache::forget('detail-class-' . Auth::id() . '-' . $class->id);
         });
     }
     

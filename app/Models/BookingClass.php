@@ -21,7 +21,9 @@ class BookingClass extends Model
         'desc',
         'status',
         'start',
-        'end'
+        'end',
+        'response',
+        'response_created_at'
     ];
 
     public function class(): BelongsTo

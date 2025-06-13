@@ -10,13 +10,19 @@ class Schedule extends Component
 {
     public $scheduleData;
     public $className;
+    public $modalKey = null;
+    public $isProfileDataFilled;
+    public $classId;
     /**
      * Create a new component instance.
      */
-    public function __construct($scheduleData, $className)
+    public function __construct($scheduleData, $className, $isProfileDataFilled, $classId,  $modalKey = null)
     {
         $this->scheduleData = $scheduleData;
         $this->className = $className;
+        $this->modalKey = $modalKey;
+        $this->isProfileDataFilled = $isProfileDataFilled;
+        $this->classId = $classId;
     }
 
     /**

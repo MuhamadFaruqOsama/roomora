@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class UserProfile extends Model
 {
@@ -18,4 +20,15 @@ class UserProfile extends Model
         "major",
         "entry_year"
     ];
+
+    protected static function booted()
+    {
+        static::saved(function ($class) {
+            Cache::forget('user_profile-' . Auth::id());
+        });
+
+        static::deleted(function ($class) {
+            Cache::forget('user_profile-' . Auth::id());
+        });
+    }
 }

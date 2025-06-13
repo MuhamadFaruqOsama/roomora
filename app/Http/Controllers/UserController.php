@@ -93,15 +93,9 @@ class UserController extends Controller
     public function profile() {
         $title = "Profile";
 
-        $ttl = 60 * 60 * 24;
+        $userData =  User::select('email', 'username', 'email_notification')->where('id', Auth::id())->first();
 
-        $userData = Cache::remember('user-data-' . Auth::id(), $ttl, function () {
-            return User::select('email', 'username', 'email_notification')->where('id', Auth::id())->first();
-        });
-
-        $data = Cache::remember('user_profile-' . Auth::id(), $ttl, function () {
-            return UserProfile::select('full_name', 'NIM', 'major', 'entry_year')->where('user_id', Auth::id())->first();
-        });
+        $data = UserProfile::select('full_name', 'NIM', 'major', 'entry_year')->where('user_id', Auth::id())->first();
 
         return view('user.profile.profile', compact('title', 'data', 'userData'));
     }
@@ -132,7 +126,13 @@ class UserController extends Controller
                 ])->withInput();
             }
 
-            return redirect()->route('User-Dashboard')->with('return_message', [
+            if(Auth::user()->role == "admin") {
+                $route = "Admin-Dashboard";
+            } else {
+                $route = "User-Dashboard";
+            }
+
+            return redirect()->route($route)->with('return_message', [
                 'status_code' => 200,
                 'status' => true,
                 'message' => 'Login successfully',
@@ -472,7 +472,6 @@ class UserController extends Controller
                     'entry_year' => $request->entry_year
                 ]);
 
-                Cache::forget('user_profile-' . Auth::id());
                 $message = "Profile updated successfully.";
             }
     
@@ -548,8 +547,6 @@ class UserController extends Controller
             $findUser->email_notification = !$findUser->email_notification;
             $findUser->save();
 
-            Cache::forget('user-data-' . Auth::id());
-            
             return response()->json([
                 'status_code' => 200,
                 'status' => true,
@@ -566,12 +563,17 @@ class UserController extends Controller
     }
 
     public function logout(Request $request) {
-        $request->user()->currentAccessToken()->delete();
+        $request->user()->tokens()->delete();
+
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect()->route('Login')->with('return_message', [
             'status_code' => 200,
             'status' => true,
-            'message' => 'Logout successfully!'
+            'message' => 'Logout successfully!',
         ]);
     }
     

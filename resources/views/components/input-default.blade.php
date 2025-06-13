@@ -7,7 +7,7 @@
     <label 
         for="input-{{ $fieldName }}" 
         class="block mb-1 text-sm font-medium text-gray-900 ms-3">
-        {{ str_replace('_', ' ', $name) }}
+        {{ str_replace(['_', '[', ']'], ' ', $name) }}
     </label>
 
     {{-- input --}}

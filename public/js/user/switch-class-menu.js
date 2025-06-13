@@ -1,4 +1,5 @@
-const classPageMenu = ['class-list', 'schedule-list', 'booking-class'];
+// const classPageMenu = ['class-list', 'schedule-list', 'booking-class'];
+const classPageMenu = ['class-list', 'schedule-list'];
 
 $(document).ready(function() {
     const savedPage = localStorage.getItem('activeClassPage') || 'class-list';
@@ -12,13 +13,13 @@ const changeClassPage = (page) => {
         if (item === page) {
             $(`#${item}`).removeClass('hidden');
             $(`#btn-${item}`)
-                .removeClass('bg-gray-200 text-gray-700')
-                .addClass('bg-[#FBBC05] text-white');
+                .removeClass('bg-gray-200')
+                .addClass('bg-[#ffe45e]');
         } else {
             $(`#${item}`).addClass('hidden');
             $(`#btn-${item}`)
-                .removeClass('bg-[#FBBC05] text-white')
-                .addClass('bg-gray-200 text-gray-700');
+                .removeClass('bg-[#ffe45e]')
+                .addClass('bg-gray-200');
         }
     });
 };
